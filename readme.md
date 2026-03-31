@@ -1,40 +1,41 @@
-# Focus Sense
+# Opti-Tracker
 
-Focus Sense is a desktop attention-monitoring assistant built for real-time focus, drowsiness, and awareness tracking. It uses MediaPipe face landmarks, OpenCV frame processing, and a PyQt interface to deliver live visual feedback and alert sounds without changing the underlying tracking logic.
+Opti-Tracker is a professional-grade desktop application for real-time focus assistance and attention monitoring. Leveraging MediaPipe facial analysis, OpenCV computer vision, and modern PyQt5 UI, Opti-Tracker provides enterprise-ready monitoring of user attention, drowsiness detection, and distraction awareness with intelligent audio-visual feedback.
 
 ---
 
 ## 🚀 Features
 
-- **Real-time focus monitoring** with live face landmark analysis
-- **Drowsiness and distraction timers** rendered directly on the camera preview
-- **Audio alert system** for fatigue and off-task behavior
-- **Profile panel** for a lightweight user session overview
-- **Modular code layout** that separates the UI layer, engine logic, and shared utilities
+- **Real-time attention analysis** using advanced facial landmark detection
+- **Intelligent drowsiness detection** with configurable sensitivity thresholds
+- **Distraction monitoring** with immediate visual and audio alerts
+- **Session profile dashboard** for tracking focus metrics over time
+- **Enterprise-grade architecture** with separated concerns: UI, processing engine, and utilities
+- **Audio alert system** delivering non-intrusive notifications for attention lapses
 
 ---
 
 ## 📁 Project Structure
 
 ```plaintext
-Focus-Sense/
-├── main.py                     # Desktop application entry point
+Opti-Tracker/
+├── main.py                     # Application entry point
 ├── face_landmarks.py           # Backward-compatible import wrapper
 ├── requirements.txt            # Python dependencies
 ├── engine/
 │   ├── __init__.py
-│   └── attention_engine.py     # Core frame analysis and alert logic
+│   └── attention_engine.py     # Core attention analysis and alert logic
 ├── utils/
 │   ├── __init__.py
-│   ├── theme.py                # Branding and UI theme constants
-│   ├── camera_preview.py       # Standalone camera preview helper
-│   └── icon_gallery.py         # Kivy icon browser helper
+│   ├── theme.py                # UI styling and visual constants
+│   ├── camera_preview.py       # Camera utility functions
+│   └── icon_gallery.py         # UI icon resources
 ├── Audio/
 │   ├── Distracted.ogg
 │   ├── Posture.ogg
 │   └── Sleepy.ogg
 ├── media/
-├── mediapipe_experiments/
+├── core_tracking/              # Advanced tracking modules
 └── models/
     └── face_landmarker.task
 ```
@@ -46,15 +47,15 @@ Focus-Sense/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/focus-sense.git
-cd focus-sense
+git clone https://github.com/rohitp253oo-wq/final-mini-project-.git
+cd Opti-Tracker
 ```
 
 ### 2. Create and activate a virtual environment
 
 ```bash
-python -m venv venv
-venv\Scripts\activate
+python -m venv .venv
+.venv\Scripts\activate
 ```
 
 ### 3. Install dependencies
@@ -65,33 +66,54 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Run the application
+## ▶️ Run the Application
 
 ```bash
 python main.py
 ```
 
-When the app opens, choose a camera source and start the feed. Focus Sense will display the live preview, render attention overlays, and play alerts when distraction or drowsiness thresholds are crossed.
+Launch the application, select your camera source, and begin monitoring. Opti-Tracker will continuously analyze focus patterns, display real-time attention metrics, and alert you when drowsiness or significant distraction is detected.
 
 ---
 
 ## ⚙️ Core Dependencies
 
-- **PyQt5** for the desktop interface
-- **OpenCV** for camera capture and frame rendering
-- **MediaPipe Tasks** for facial landmark detection
-- **sounddevice** and **soundfile** for non-blocking alert playback
+- **PyQt5** – Modern desktop UI framework
+- **OpenCV** – Camera capture and frame processing
+- **MediaPipe Tasks** – Facial landmark recognition and analysis
+- **sounddevice & soundfile** – Non-blocking audio alert delivery
 
 ---
 
-## 💡 Typical Use Cases
+## 📊 Use Cases
 
-- Personal focus monitoring during study or work sessions
-- Drowsiness awareness during long desktop tasks
-- Prototype research for attention-aware computer vision interfaces
+- **Workplace focus optimization** – Monitor employee attention during critical tasks
+- **Educational environments** – Detect student engagement and drowsiness
+- **Research and development** – Prototype attention-aware human-computer interaction systems
+- **Professional productivity** – Personal focus tracking during deep work sessions
+
+---
+
+## 🏗️ Architecture
+
+Opti-Tracker follows a clean separation of concerns:
+
+- **`main.py`** – PyQt5 UI layer and session management
+- **`engine/attention_engine.py`** – Core computer vision and attention analysis
+- **`utils/`** – Shared utilities for theming, camera operations, and resources
 
 ---
 
 ## 🤝 Contributing
 
-If you plan to extend the project, keep UI updates in `main.py`, shared visual constants in `utils/theme.py`, and frame-processing logic in `engine/attention_engine.py`.
+To extend Opti-Tracker:
+- Add UI improvements in `main.py`
+- Update styling constants in `utils/theme.py`
+- Enhance analysis logic in `engine/attention_engine.py`
+- Place experimental tracking modules in `core_tracking/`
+
+---
+
+## 📝 License
+
+This project is provided as-is for professional use.
