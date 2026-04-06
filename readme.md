@@ -1,6 +1,6 @@
-# Opti-Tracker
+# neurogaze
 
-Opti-Tracker is a professional-grade desktop application for real-time focus assistance and attention monitoring. Leveraging MediaPipe facial analysis, OpenCV computer vision, and modern PyQt5 UI, Opti-Tracker provides enterprise-ready monitoring of user attention, drowsiness detection, and distraction awareness with intelligent audio-visual feedback.
+neurogaze is a professional-grade desktop application for real-time focus assistance and attention monitoring. Leveraging MediaPipe facial analysis, OpenCV computer vision, and modern PyQt5 UI, neurogaze provides enterprise-ready monitoring of user attention, drowsiness detection, and distraction awareness with intelligent audio-visual feedback.
 
 ---
 
@@ -18,7 +18,7 @@ Opti-Tracker is a professional-grade desktop application for real-time focus ass
 ## 📁 Project Structure
 
 ```plaintext
-Opti-Tracker/
+neurogaze/
 ├── main.py                     # Application entry point
 ├── face_landmarks.py           # Backward-compatible import wrapper
 ├── requirements.txt            # Python dependencies
@@ -48,7 +48,7 @@ Opti-Tracker/
 
 ```bash
 git clone https://github.com/rohitp253oo-wq/final-mini-project-.git
-cd Opti-Tracker
+cd neurogaze
 ```
 
 ### 2. Create and activate a virtual environment
@@ -72,7 +72,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Launch the application, select your camera source, and begin monitoring. Opti-Tracker will continuously analyze focus patterns, display real-time attention metrics, and alert you when drowsiness or significant distraction is detected.
+Launch the application, select your camera source, and begin monitoring. neurogaze will continuously analyze focus patterns, display real-time attention metrics, and alert you when drowsiness or significant distraction is detected.
 
 ---
 
@@ -96,7 +96,7 @@ Launch the application, select your camera source, and begin monitoring. Opti-Tr
 
 ## 🏗️ Architecture
 
-Opti-Tracker follows a clean separation of concerns:
+neurogaze follows a clean separation of concerns:
 
 - **`main.py`** – PyQt5 UI layer and session management
 - **`engine/attention_engine.py`** – Core computer vision and attention analysis
@@ -106,7 +106,7 @@ Opti-Tracker follows a clean separation of concerns:
 
 ## 🤝 Contributing
 
-To extend Opti-Tracker:
+To extend neurogaze:
 - Add UI improvements in `main.py`
 - Update styling constants in `utils/theme.py`
 - Enhance analysis logic in `engine/attention_engine.py`

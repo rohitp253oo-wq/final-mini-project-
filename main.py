@@ -77,7 +77,7 @@ class SplashScreen(QMainWindow):
 
 
 class CameraWindow(QMainWindow):
-    """Render the profile panel and live camera feed for Focus Sense."""
+    """Render the profile panel and live camera feed for neurogaze."""
 
     def __init__(self):
         super().__init__()
@@ -100,12 +100,15 @@ class CameraWindow(QMainWindow):
         self.setCentralWidget(central_widget)
 
         main_layout = QHBoxLayout()
+        main_layout.setSpacing(20)
+        main_layout.setContentsMargins(20, 20, 20, 20)
 
         profile_layout = QVBoxLayout()
+        profile_layout.setSpacing(20)
         profile_layout.setAlignment(Qt.AlignTop)
 
         profile_title = QLabel("User Profile", self)
-        profile_title.setFont(QFont("Arial", 16, QFont.Bold))
+        profile_title.setFont(QFont("Arial", 18, QFont.Bold))
         profile_title.setStyleSheet(f"color: {PRIMARY_TEXT_COLOR};")
         profile_layout.addWidget(profile_title)
 
@@ -113,7 +116,7 @@ class CameraWindow(QMainWindow):
         self.profile_picture_label.setAlignment(Qt.AlignCenter)
         self.profile_picture_label.setFixedSize(150, 150)
         self.profile_picture_label.setStyleSheet(
-            f"border: 1px solid {SURFACE_BORDER_COLOR};"
+            f"border: 1px solid {SURFACE_BORDER_COLOR}; border-radius: 10px;"
         )
         profile_layout.addWidget(self.profile_picture_label)
 
@@ -134,41 +137,62 @@ class CameraWindow(QMainWindow):
 
         self.profile_display = QLabel(self)
         self.profile_display.setAlignment(Qt.AlignTop)
+        self.profile_display.setWordWrap(True)
         self.profile_display.setStyleSheet(
-            f"border: 1px solid {SURFACE_BORDER_COLOR}; padding: 10px; color: {SECONDARY_TEXT_COLOR};"
+            "border: 1px solid #d0d3d6; padding: 12px; color: #2c3e50; background-color: #ffffff;"
         )
         profile_layout.addWidget(self.profile_display)
+        profile_layout.addStretch(1)
 
-        main_layout.addLayout(profile_layout)
+        profile_widget = QWidget(self)
+        profile_widget.setLayout(profile_layout)
+        profile_widget.setFixedWidth(300)
+        profile_widget.setStyleSheet(
+            "background-color: #f5f6f7;"
+            "border-right: 1px solid #d7dbdd;"
+            "color: #2c3e50;"
+            "QLabel { color: #2c3e50; }"
+            "QLineEdit { background-color: #ffffff; border: 1px solid #cccccc; border-radius: 5px; padding: 6px; color: #2c3e50; }"
+            "QPushButton { background-color: #3498db; color: #ffffff; border: none; border-radius: 6px; padding: 8px 12px; }"
+            "QPushButton:hover { background-color: #2980b9; }"
+            "QPushButton:pressed { background-color: #217dbb; }"
+        )
+
+        main_layout.addWidget(profile_widget)
 
         camera_layout = QVBoxLayout()
+        camera_layout.setSpacing(20)
+
+        controls_layout = QHBoxLayout()
+        controls_layout.setSpacing(10)
 
         self.camera_dropdown = QComboBox(self)
         self.camera_dropdown.addItems(["Select Camera", "0", "1"])
         self.camera_dropdown.currentIndexChanged.connect(self.switch_camera_source)
-        camera_layout.addWidget(self.camera_dropdown)
-
-        button_layout = QHBoxLayout()
+        controls_layout.addWidget(self.camera_dropdown)
 
         self.start_button = QPushButton("Start Camera", self)
         self.start_button.setFixedSize(150, 40)
         self.start_button.clicked.connect(self.start_camera_stream)
-        button_layout.addWidget(self.start_button)
+        controls_layout.addWidget(self.start_button)
 
         self.stop_button = QPushButton("Stop Camera", self)
         self.stop_button.setFixedSize(150, 40)
         self.stop_button.clicked.connect(self.stop_camera_stream)
-        button_layout.addWidget(self.stop_button)
+        controls_layout.addWidget(self.stop_button)
+        controls_layout.addStretch(1)
 
-        button_layout.setAlignment(Qt.AlignCenter)
-        camera_layout.addLayout(button_layout)
+        camera_layout.addLayout(controls_layout)
 
-        self.image_label = QLabel(self)
-        self.image_label.setAlignment(Qt.AlignCenter)
-        self.image_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.image_label.setText("Camera feed will appear here.")
-        self.image_label.setStyleSheet(f"color: {SECONDARY_TEXT_COLOR};")
-        camera_layout.addWidget(self.image_label)
+        self.display_label = QLabel(self)
+        self.display_label.setAlignment(Qt.AlignCenter)
+        self.display_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.display_label.setScaledContents(True)
+        self.display_label.setText("Camera feed will appear here.")
+        self.display_label.setStyleSheet(
+            f"border: 1px solid {SURFACE_BORDER_COLOR}; background-color: #111; color: {SECONDARY_TEXT_COLOR};"
+        )
+        camera_layout.addWidget(self.display_label)
 
         main_layout.addLayout(camera_layout)
         central_widget.setLayout(main_layout)
@@ -286,7 +310,7 @@ class CameraWindow(QMainWindow):
             bytes_per_line,
             QImage.Format_RGB888,
         )
-        self.image_label.setPixmap(QPixmap(q_image))
+        self.display_label.setPixmap(QPixmap(q_image))
 
     def switch_camera_source(self):
         """Swap to a new camera source when the user changes the selector."""

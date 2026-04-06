@@ -1,4 +1,4 @@
-"""Core frame-analysis utilities for the Focus Sense desktop monitor."""
+"""Core frame-analysis utilities for the neurogaze desktop monitor."""
 
 from pathlib import Path
 import threading

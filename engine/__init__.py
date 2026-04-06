@@ -1,4 +1,4 @@
-"""Core monitoring engine package for Focus Sense."""
+"""Core monitoring engine package for neurogaze."""
 
 from .attention_engine import (
     DISTRACTED_ALERT_AUDIO,

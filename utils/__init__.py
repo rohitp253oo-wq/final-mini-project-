@@ -1,1 +1,1 @@
-"""Shared UI and helper utilities for Focus Sense."""
+"""Shared UI and helper utilities for neurogaze."""
